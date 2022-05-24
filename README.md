@@ -35,21 +35,21 @@ There are two options for completing this task, you can either:
 _If you've chosen to complete this as a take-home, please include some short answers to the questions below to help us understand your approach (bullet points is fine!). If you've chosen an in-person session, we'll talk through these questions during the call._
 
 1. How did you navigate & understand the architecture of this new React codebase?
-   My understanding of the architecture of this application was a single parent component (App.js) displayed both children components RandomDog and SavedPhotos. The children components were independent of each other.
+   My understanding of the architecture of this application was a single parent component ,App.js, displayed both children components RandomDog and SavedPhotos. The child components were independent of each other.
 
 2. How did you go about working with & making requests to the backend API?
-   I used axios as this was pre-installed and set-up a service for it. The requests made to the API then were called upon the RandomDog component loading with useEffect. This same function was re-used to initiate a call to the api when the user clicks the Next Dog button.
+   I used axios as this was pre-installed and set-up a service for it in the services folder making the api request when used in the component easier to read. The requests made to the API then were called upon the RandomDog component loading with useEffect. This same function was re-used to initiate a call to the api when the user clicks the Next Dog button.
 
 3. How did you make decisions around state management?
-   In an app using only a few components which are nested one level deep such as this I was happy to use "PASS data to child". If there were a greater number of components nested deeper I would use Context to access state in these components. I had the state stored as close as possible to the child component in the case of Random Dog this was in the component and the savedPhotos was stored one level higher in the App.js component.
+   In an app using only a few components which are nested one level deep such as this I was happy to use prop drilling. If there were a greater number of components nested many levels deeper I would use another state management tool such as Context or Redux to control the state management.
+   My plan was to keep the necessary state as close to the component that it requires it. With this in mind the RandomDog component needed to have the url stored in local state. The SavedPhotos state needed to be accessed by both the RandomDog and SavedPhotos component so I hoisted it up into the parent component.
 
 4. What are some future improvements that you would add to this project as it scales?
+   My initial thoughts would be to abstract out the components to a greater degree. The buttons could be separated out into their own files and so could the SavedPhotos-photos div in the SavedPhotos component. This would give us more control over the component and make it reusable.
 
-   Abstract out the components to a greater degree. The buttons could be separated out into their own files and so could the SavedPhotos-photos div in SavedPhotos. This would give us more control reusability over the component and make it reusable.
+   I would also think about Implement a state management provider and pass down state from a parent level in this case App.js which enables the children components to just display data.
 
-   Implement context and pass down state from a parent level in this case App.js which enables the children components to just display data.
-
-   The saved photos to be stored in local storage allowing the user to refresh the page and the saved Photos display remains unchanged.
+   An added feature could be for the saved photos to be stored in local storage allowing the user to refresh the page and the saved Photos display remains unchanged.
 
 ## Take-home: Time spent on this task & submitting
 
