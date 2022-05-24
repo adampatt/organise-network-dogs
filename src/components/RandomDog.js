@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { DogApi } from "../services/axios.services";
 import "./RandomDog.css";
 
 export default function RandomDog(props) {
   const { addToFav } = props;
   const [randomDogUrl, setRandomDogUrl] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const fetchDogImage = () => {
-    axios
-      .get("https://dog.ceo/api/breeds/image/random")
+    DogApi.get("/image/random")
       .then((res) => setRandomDogUrl(res.data.message))
+      .then(setLoading(false))
       .catch((err) => console.log(err));
   };
 
@@ -20,7 +21,11 @@ export default function RandomDog(props) {
   return (
     <div className="RandomDog">
       <h2 className="RandomDog-title">Random Dogs 🔄</h2>
-      <img className="RandomDog-image" src={randomDogUrl} />
+      {loading ? (
+        <p>Your random dog image is loading</p>
+      ) : (
+        <img className="RandomDog-image" src={randomDogUrl} />
+      )}
       <p>
         <button
           className="RandomDog-button"

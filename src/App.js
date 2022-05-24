@@ -8,7 +8,7 @@ export default function App() {
   const [savedPhotos, setSavedPhotos] = useState([]);
 
   const addDogToSavedPhotos = (data) => {
-    setSavedPhotos([...savedPhotos, data]);
+    setSavedPhotos(savedPhotos.includes(data) ? savedPhotos : [...savedPhotos, data]);
   };
 
   return (
