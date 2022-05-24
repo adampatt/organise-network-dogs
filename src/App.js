@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SavedPhotos from "./components/SavedPhotos";
 import RandomDog from "./components/RandomDog";
 

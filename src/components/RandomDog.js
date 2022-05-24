@@ -4,6 +4,7 @@ import "./RandomDog.css";
 
 export default function RandomDog(props) {
   const { addToFav } = props;
+
   const [randomDogUrl, setRandomDogUrl] = useState("");
   const [loading, setLoading] = useState(true);
 
